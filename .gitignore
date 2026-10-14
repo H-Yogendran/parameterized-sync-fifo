@@ -1,0 +1,6 @@
+build/
+*.vvp
+*.vcd
+*.log
+*.tmp
+.DS_Store

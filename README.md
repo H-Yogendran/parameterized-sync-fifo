@@ -22,17 +22,17 @@ A synthesizable, parameterized synchronous FIFO implemented in Verilog with a se
 
 ## Architecture
 
-The FIFO stores data in a memory array and tracks two pointers:
+The FIFO stores data in a memory array and tracks two pointers plus an occupancy counter:
 
 - `wr_ptr`: next location to receive a write
 - `rd_ptr`: next location to be returned by a read
 - `count`: number of valid entries currently stored
 
 ```text
-                  +----------------------+
+                 +----------------------+
       din ------>|                      |
       wr_en ---->|     FIFO Memory      |----> dout
-                 |                      |
+      rd_en ---->|                      |
                  +----------+-----------+
                             ^
                        wr_ptr / rd_ptr

@@ -1,6 +1,8 @@
 build/
 *.vvp
 *.vcd
+*.fst
 *.log
 *.tmp
+*_sim
 .DS_Store

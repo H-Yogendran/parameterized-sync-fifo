@@ -1,0 +1,24 @@
+name: Simulation
+
+# Runs the self-checking testbench on every push and pull request.
+# The green check on GitHub shows reviewers the tests actually pass.
+on:
+  push:
+  pull_request:
+
+jobs:
+  sim:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Icarus Verilog
+        run: sudo apt-get update && sudo apt-get install -y iverilog
+      - name: Run testbench on all configurations
+        run: make
+      - name: Upload waveform
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: waveform
+          path: build/**/*.vcd
+          if-no-files-found: ignore
